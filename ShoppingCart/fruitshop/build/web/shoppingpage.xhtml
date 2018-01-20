@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <h:head>
+    <title>Fruit Shop</title>
+  </h:head>
+  <h:body>
+
+    <h:form>
+      You have #{shoppingPageView.cartSize} items.
+
+      <h:panelGroup />
+
+      <h:commandButton value="Prodeed To CheckOut" action="list"  />
+    </h:form>
+    
+    <br />
+    <br />      
+
+    <p:dataScroller value="#{shoppingPageView.listFruits()}" var="shop" chunkSize="10" mode="inline" scrollHeight="500">
+      <f:facet name="header">
+        Available Fruits
+      </f:facet>                     
+      <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
+        <h:graphicImage value="#{shop.fruitImagePath}" />
+        <p:outputPanel>
+          <h:panelGrid columns="2" cellpadding="1">
+            <h:outputText value="Name:" />
+            <h:outputText value="#{shop.fruitName}" style="font-weight: bold"/>  
+            <h:outputText value="Availble Quantity" />
+            <h:outputText value="#{shop.quantity}" style="font-weight: bold"/>  
+          </h:panelGrid>
+        </p:outputPanel>
+
+        <h:form>
+          <h:panelGrid>
+            <h:outputLabel for="minMax" value="Pick Fruits " />
+            <p:spinner id="minMax" value="#{fruitOrder.quantity}" min="0" max="1000" />
+            <input type="hidden" name="hiddenFruitId" value="#{shop.fruitid}" />
+          </h:panelGrid>
+          <h:panelGrid>                  
+            <h:commandButton value="Add to Cart" styleClass="ui-priority-primary" action="#{shoppingPageView.addToCart(shop.fruitid)}"/>
+          </h:panelGrid>
+        </h:form>
+
+      </h:panelGrid>
+      <hr style="border-bottom: 1px #000"></hr>
+    </p:dataScroller>
+
+  </h:body>
+</html>
+

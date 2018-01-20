@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+		<h1>Enter Delivery Address </h1>
+                <div class="ui-g-12 ui-md-6 ui-lg-3">
+		<h:form>
+                    <p:growl id="msgs" showDetail="true" />
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel value="Name"  />
+                                <p:inputText value="#{customerBean.customerName}"/>
+
+				<p:outputLabel value="Address"  />
+				<p:inputText value="#{customerBean.address}"/>
+                               <p:outputLabel value="MetroStation"  />
+                                <p:inputText value="#{customerBean.metrostation}"/>
+
+                                <p:outputLabel value="Pincode"   />
+                                <p:inputText value="#{customerBean.pincode}" maxlength="6"/>
+
+				<h:panelGroup/>
+				
+                                <p:commandButton value="SaveAddress " icon="ui-icon-check"  action="#{customerBean.addAddress()}" style="margin-right:20px;"> 
+                                                
+                                </p:commandButton>
+                                <br/>
+                                <p:commandButton value="Reset Address"  process="@this" action="#{customerBean.resetFail()}" style="margin-right:20px;" />
+                                
+                                <p:commandButton value="Next page" action=
+
+			</h:panelGrid>
+
+		</h:form>
+                
+                <h:form>
+
+                    <p:outputLabel value="#{customerBean.toString()}"   />
+
+		</h:form>
+                </div>
+    </h:body>
+</html>
+

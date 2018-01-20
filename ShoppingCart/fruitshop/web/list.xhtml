@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  <h:head>
+    <title>My Fruit Basket</title>
+  </h:head>
+  <h:body>
+
+    <h2>My Fruit Basket</h2>
+
+    <h:form>
+
+      <h:dataTable var="f" value="#{fruitBasket.fruits}">
+        <h:column>
+          <f:facet name="header">Fruit Name</f:facet>
+          <h:outputText value="#{f.fruitName}"></h:outputText>
+        </h:column>
+
+        <h:column>
+          <f:facet name="header">Quantity</f:facet>
+          <h:outputText value="#{f.quantity}"></h:outputText>
+        </h:column>
+
+        <h:column>
+          <f:facet name="header">Remove?</f:facet>
+          <h:commandLink value="remove" action="#{fruitBasket.remove(f.fruitName)}"></h:commandLink>
+        </h:column>
+
+
+
+      </h:dataTable>
+
+      <br />
+      <br />
+
+
+      <h:commandLink value="Add more fruits" action="create" ></h:commandLink>
+
+    </h:form>
+
+    <br />
+    <br />
+
+    <h:form id="checkOutForm">
+
+      <p:growl id="msgs" showDetail="true" />
+
+      <h:panelGrid columns="2" cellpadding="5">
+
+        <p:outputLabel value="Name"  />
+        <p:inputText value="#{fruitBasket.name}"
+                     id="name"
+                     required="true" />
+
+        <p:outputLabel value="Location"  />
+        <p:inputText  value="#{fruitBasket.location}" 
+                      id="location"
+                      required="true" />
+
+        <p:outputLabel value="Comment"  />
+        <p:inputText  value="#{fruitBasket.comment}" 
+                      id="comment"
+                      required="true" />
+
+
+        <h:panelGroup/>
+
+        <br/>
+        <br/>
+
+      </h:panelGrid>
+
+      <p:commandButton value="Check Out" action="#{fruitBasket.checkOut()}" > 
+      </p:commandButton>
+
+
+
+    </h:form>
+
+  </h:body>
+</html>
+

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+    <title>Fruit Shop</title>
+  </h:head>
+  <h:body>
+    <h2>Hello from Fruit Shop!</h2>
+
+    <h:form id="fruitForm">
+
+      <h:panelGrid columns="3">
+
+        Fruit Name: 
+        <h:inputText value="#{fruitOrder.fruitName}" 
+                     id="fruitName"
+                     required="true" 
+                     requiredMessage="What is your fruit name?" />
+        <h:message for="fruitName" />
+
+        Quantity: 
+        <h:inputText value="#{fruitOrder.quantity}" /> 
+        <h:panelGroup />
+
+        <h:panelGroup />
+        <h:commandButton value="Add" action="#{fruitOrder.addToBasket()}" />
+        <h:panelGroup />
+
+      </h:panelGrid>
+
+    </h:form>
+
+  </h:body>
+</html>
+
